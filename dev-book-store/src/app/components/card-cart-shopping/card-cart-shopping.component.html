@@ -1,0 +1,55 @@
+<div class="cart-container">
+  <div class="cart-container_header">
+      <h2 class="title"> Checkout Cart </h2>
+  </div>
+
+  <div class="cart-container_list">
+
+ 
+      <div class="empty-cart" >
+          Opa! Você ainda não adicionou nenhum item
+      </div>
+
+  </div>
+  
+  <div class="controls">
+      <div class="footer">
+          <h2> Resumo do pedido </h2>
+
+          <app-item-cart 
+          *ngFor="let item of cartProductList"
+          [item]="item"></app-item-cart>
+
+
+          <div class="discount-wrapper">
+              <div class="discount-container">
+                  Cupom de desconto: 
+                  <div class="wrapper">
+                      <input type="text"  >
+                      <button  > Aplicar </button>
+                  </div>
+              </div>
+          </div>
+          <div class="values-container">
+              <div class="values-container_session">
+                  <span> Subtotal: </span>
+                  <span>  </span>
+              </div>
+              <div class="values-container_session">
+                  <span> Desconto: </span>
+                  <span>  </span>
+              </div>
+              <hr>
+              <div class="values-container_session">
+                  <span> Total: </span>
+                  <span>   </span>
+              </div>
+          </div>
+      </div>
+      <button 
+           matRipple 
+          matRippleColor="#2b2b2b" 
+          class="finish-button"
+       > Finalizar </button>
+  </div>
+</div>

@@ -1,0 +1,40 @@
+.card {
+  max-width: 340px;
+}
+
+.example-header-image {
+  background-image: url("https://material.angular.io/assets/img/examples/shiba1.jpg");
+  background-size: cover;
+  max-width: 350px;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 25px;
+  column-gap: 15px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card-content {
+  text-align: center;
+}
+
+.title-name-product {
+  font-size: 15px;
+}
+
+.button-add-item {
+  width: 100px;
+  align-self: center;
+  margin: 8px;
+}
+
+.card-img {
+  margin: 5px;
+  padding: 15px;
+  width: 250px;
+  align-self: center;
+}

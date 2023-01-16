@@ -1,0 +1,20 @@
+<mat-toolbar class="header mat-elevation-z5">
+  <span>DevBook Store</span>
+  <span class="spacer"></span>
+  <button
+    mat-button
+    [matMenuTriggerFor]="menu"
+    class="icon-shopping-cart-button"
+  >
+    <mat-icon class="icon-shopping-cart" matBadgeSize="small" [matBadge]="countItemCart" aria-label="Icon shopping cart"
+      >shopping_cart</mat-icon
+    >
+  </button>
+  <mat-menu #menu="matMenu">
+    <app-card-cart-shopping  class="box-shopping-cart"
+    ></app-card-cart-shopping>
+
+  </mat-menu>
+</mat-toolbar>
+
+<div class="img-background"></div>
