@@ -1,0 +1,36 @@
+.header {
+    color: #fff;
+    background-color: #373737;
+}
+
+.spacer {
+    flex: 1 1 auto;
+}
+
+.icon-shopping-cart-button {
+    cursor: pointer;
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    
+}
+
+.icon-shopping-cart {
+   cursor: pointer;
+}
+
+
+.box-shopping-cart {
+    width: 900px ;
+}
+
+.img-background {
+    height: 250px;
+    background-image: url("https://images.unsplash.com/photo-1507721999472-8ed4421c4af2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80");
+    background-position: center;
+    background-size: cover;
+    opacity: 0.8;
+    margin-bottom: 40px;
+}
+
+.menu-drop-cart {}

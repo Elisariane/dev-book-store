@@ -1,0 +1,13 @@
+<div class="login-page">
+  <div class="form">
+    <form class="login-form" action="submit" (ngSubmit)="login()">
+      <input #inputName type="text" placeholder="nome" required  />
+      <input type="text" placeholder="email" required />
+      <input type="password" placeholder="senha" required />
+      <button mat-fab extended color="primary">Login</button>
+      <p class="message">
+        Não é cadastrado? <a routerLink="/login">Crie uma conta</a>
+      </p>
+    </form>
+  </div>
+</div>

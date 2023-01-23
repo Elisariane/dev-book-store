@@ -1,0 +1,28 @@
+<div class="mat-elevation-z1">
+    <div class="">
+        <img class="" [src]="item.img" alt="">
+    </div>
+
+    <div class="">
+
+        <div class="">
+            <p class="title" max> {{ item.name }} </p>
+            <p class="price"> {{ item.price | currency: "BRL" }} </p>
+        </div>
+
+        <button mat-icon-button class="remove-btn"  (click)="removeCart()" >
+            <mat-icon> delete </mat-icon>
+        </button>
+
+        <div class="">
+            <button  mat-icon-button  (click)="subQuantity()"  > 
+                <mat-icon> remove </mat-icon>
+            </button>
+            <input type="text" inputmode="numeric" value={{quantityProduct}} >
+            <button  mat-icon-button (click)="addQuantity()" > 
+                <mat-icon> add </mat-icon>
+            </button>
+        </div>
+    </div>
+
+</div>
