@@ -10,10 +10,11 @@ export class LoginService {
   user: IUser = {} as IUser;
 
   getUsername() {
-    return this.user.name;
+    return localStorage.getItem('userName');
   }
   
   setUser(user:IUser){
+    localStorage.setItem('userName', this.user.name)
     this.user = user;
   }
 }

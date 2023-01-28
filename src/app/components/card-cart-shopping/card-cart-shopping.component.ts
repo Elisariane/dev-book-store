@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { ICart } from './../../interfaces/ICart';
 import { ICupom } from './../../interfaces/ICupom';
 import { CupomService } from "./../../services/cupom.service";
@@ -15,7 +16,8 @@ export class CardCartShoppingComponent {
   constructor(
     private productService: ProductService,
     private cartService: CartService,
-    private cupomSertvice: CupomService
+    private cupomSertvice: CupomService,
+    private router: Router
   ) {}
 
   @Input()
@@ -37,12 +39,6 @@ export class CardCartShoppingComponent {
   ngOnInit(): void {
     this.updateTotal();
   }
-  updateTotal() {
-    this.cartProductList.forEach(prod => {
-      this.total = this.total + prod.price * 1;
-    })
-    return this.total;
-  }
 
   applyDiscount(cupom: string) {
     this.cupomApplied = this.cupomSertvice.cupomIsValid(cupom);
@@ -51,6 +47,11 @@ export class CardCartShoppingComponent {
     this.subTotal =  this.cupomApplied?.value;
   }
 
-  
+  goToHome() {
+    this.router.navigate([''])
+  }
 
+  updateTotal() {
+   this.total = this.cartService.sumTotal();
+  }
 }

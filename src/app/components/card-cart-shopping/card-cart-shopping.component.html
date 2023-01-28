@@ -1,56 +1,58 @@
 <div class="cart-container">
-  <div class="cart-container_header">
-      <h2 class="title"> Checkout Cart </h2>
+  <div class="cart-container-header">
+    <h2 class="title">Checkout Cart</h2>
   </div>
 
   <div class="cart-container_list">
-
- 
-      <div class="empty-cart" *ngIf="cartProductList.length == 0" >
-           Você ainda não adicionou nenhum item.
-      </div>
-
+    <div class="empty-cart" *ngIf="cartProductList.length == 0">
+      <img
+        class="image-hunt-product"
+        src="../../../assets/img/hunt-product.png"
+        alt=""
+      />
+      <p>Você ainda não adicionou nenhum item.</p>
+      <button class="button-go-home" mat-flat-button color="primary" (click)="goToHome()">Ir as compras</button>
+    </div>
   </div>
-  
+
   <div class="controls" *ngIf="cartProductList.length >= 1">
-      <div class="footer">
-          <h2> Resumo do pedido </h2>
+    <div class="footer">
+      <h2>Resumo do pedido</h2>
 
-          <app-item-cart 
-          *ngFor="let item of cartProductList"
-          [item]="item" [quantityProduct]="quantityProduct"></app-item-cart>
+          <app-item-cart
+            *ngFor="let item of cartProductList"
+            [item]="item"
+            [quantityProduct]="quantityProduct"
+          ></app-item-cart> 
 
-
-          <div class="discount-wrapper">
-              <div class="discount-container">
-                  Cupom de desconto: 
-                  <div class="wrapper">
-                      <input type="text"    >
-                      <!-- (change)="applyDiscount(cupomApplied.code)" -->
-                      <button  > Aplicar </button>
-                  </div>
-              </div>
+      <div class="discount-wrapper">
+        <div class="discount-container">
+          Cupom de desconto:
+          <div class="wrapper">
+            <input type="text" />
+            <!-- (change)="applyDiscount(cupomApplied.code)" -->
+            <button>Aplicar</button>
           </div>
-          <div class="values-container">
-              <div class="values-container_session" *ngIf="discountIsApplied">
-                  <span> Desconto: - {{ cupomApplied?.value |  currency: "BRL"}}</span>
-                  <span>  </span>
-              </div>
-              <hr>
-              <div class="values-container_session" *ngIf="discountIsApplied">
-                <span> Subtotal: {{ subTotal |  currency: "BRL"}}</span>
-                <span>  </span>
-             </div>
-              <div class="values-container_session">
-                  <span> Total: {{ total | currency: "BRL"}}</span>
-                  <span>   </span>
-              </div>
-          </div>
+        </div>
       </div>
-      <button 
-           matRipple 
-          matRippleColor="#2b2b2b" 
-          class="finish-button"
-       > Finalizar </button>
+      <div class="values-container">
+        <div class="values-container_session" *ngIf="discountIsApplied">
+          <span> Desconto: - {{ cupomApplied?.value | currency : "BRL" }}</span>
+          <span> </span>
+        </div>
+        <hr />
+        <div class="values-container_session" *ngIf="discountIsApplied">
+          <span> Subtotal: {{ subTotal | currency : "BRL" }}</span>
+          <span> </span>
+        </div>
+        <div class="values-container_session">
+          <span (change)="updateTotal()"> Total: {{ total | currency : "BRL" }}</span>
+          <span> </span>
+        </div>
+      </div>
+    </div>
+    <button matRipple matRippleColor="#2b2b2b" class="finish-button">
+      Finalizar
+    </button>
   </div>
 </div>

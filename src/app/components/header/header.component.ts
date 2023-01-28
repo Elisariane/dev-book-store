@@ -23,15 +23,19 @@ export class HeaderComponent {
     return (this.countItemCart = this.cartService.getCountItemCart());
   }
 
-  getAllProductInCart() {
-    return this.cartService.getAllProductInCart();
-  }
-
   getCategories() {
     return (this.categories = this.categoryService.getNameAllCategories());
   }
 
   goToLogin() {
     this.router.navigate(['login']);
+  }
+  
+  goToCartPage(){
+    this.router.navigate(['cart']);
+  }
+
+  goToHome() {
+    this.router.navigate([''])
   }
 }

@@ -1,10 +1,10 @@
-import { ICart } from '../interfaces/ICart';
-import { ProductService } from 'src/app/services/product.service';
-import { Injectable } from '@angular/core';
-import { IProduct } from '../interfaces/IProduct';
+import { ICart } from "../interfaces/ICart";
+import { ProductService } from "src/app/services/product.service";
+import { Injectable } from "@angular/core";
+import { IProduct } from "../interfaces/IProduct";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class CartService {
   constructor(private productSevice: ProductService) {}
@@ -17,29 +17,32 @@ export class CartService {
   cart = {} as ICart;
 
   add(product: IProduct) {
-    if(!this.cartProductList.includes(product)){
+    if (!this.cartProductList.includes(product)) {
       this.cartProductList.push(product);
       this.countItemCart++;
-    } else {
-      this.quantityProduct++;
     }
-
+    product.quantity++;
   }
 
   getAllProductInCart() {
     return this.cartProductList;
   }
 
-  remove(item: IProduct){
-    this.cartProductList = this.cartProductList.filter( product =>  product.id != item.id)
+  remove(item: IProduct) {
+    this.cartProductList = this.cartProductList.filter(
+      (product) => product.id != item.id
+    );
   }
 
   getCountItemCart() {
-    return this.countItemCart = this.cartProductList.length;
+    return (this.countItemCart = this.cartProductList.length);
   }
-  
-  getQuantityProductsInCart() {
-    return this.quantityProduct;
+
+  sumTotal() {
+    this.cartProductList.forEach(prod => {
+      this.total = this.total + (prod.price * prod.quantity);
+    })
+    return this.total;
   }
 
 }

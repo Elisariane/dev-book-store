@@ -1,27 +1,30 @@
-<div class="mat-elevation-z1">
-    <div class="">
-        <img class="" [src]="item.img" alt="">
+<div class="mat-elevation-z1 container">
+    <div class="img-card">
+        <img class="img-prod" [src]="item.img" alt="">
     </div>
 
-    <div class="">
+    <div class="section-item-product">
 
-        <div class="">
+        <div class="section-header">
             <p class="title" max> {{ item.name }} </p>
             <p class="price"> {{ item.price | currency: "BRL" }} </p>
         </div>
 
-        <button mat-icon-button class="remove-btn"  (click)="removeCart()" >
-            <mat-icon> delete </mat-icon>
-        </button>
-
         <div class="">
+            
+           <div class="controls-quantity">
             <button  mat-icon-button  (click)="subQuantity()"  > 
                 <mat-icon> remove </mat-icon>
             </button>
-            <input type="text" inputmode="numeric" value={{quantityProduct}} >
+            <input class="input-quantity" type="text" inputmode="numeric" value={{item.quantity}} >
             <button  mat-icon-button (click)="addQuantity()" > 
                 <mat-icon> add </mat-icon>
             </button>
+            
+            <button mat-icon-button class="remove-btn"  (click)="removeCart()" >
+                <mat-icon> delete </mat-icon>
+            </button>
+           </div>
         </div>
     </div>
 

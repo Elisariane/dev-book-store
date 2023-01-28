@@ -1,35 +1,21 @@
 <mat-toolbar class="header mat-elevation-z5">
-  <span>DevBook Store | </span>
+  <a class="header-title-nav" (click)="goToHome()">DevBook Store | </a>
   <button mat-button [matMenuTriggerFor]="aboveMenu">Categorias</button>
   <mat-menu #aboveMenu="matMenu" yPosition="above">
-    <button mat-menu-item *ngFor="let category of getCategories()"> {{category}}</button>
+    <button mat-menu-item *ngFor="let category of getCategories()">
+      {{ category }}
+    </button>
   </mat-menu>
   <span class="spacer"></span>
 
-  <button
-    mat-button
-    (click)="goToLogin()"
-  >
-  <mat-icon class="icon-user" aria-label="Icon user"
-      >account_circle</mat-icon>
+  <button mat-button (click)="goToLogin()">
+    <mat-icon class="icon-user" aria-label="Icon user">account_circle</mat-icon>
   </button>
-
-  <button
-    mat-button
-    [matMenuTriggerFor]="menu"
-    class="icon-shopping-cart-button"
-  >
-
-    <mat-icon class="icon-shopping-cart" matBadgeSize="small" [matBadge]="getTotalItemCart()" aria-label="Icon shopping cart"
+  <button mat-button (click)="goToCartPage()">
+    <mat-icon class="icon-shopping-cart" aria-label="Icon cart" matBadgeSize="small" [matBadge]="getTotalItemCart()" 
       >shopping_cart</mat-icon
     >
-    
   </button>
-  <mat-menu #menu="matMenu" >
-    <app-card-cart-shopping [cartProductList]="getAllProductInCart()" class="box-shopping-cart"
-    ></app-card-cart-shopping>
-
-  </mat-menu>
 </mat-toolbar>
 
 <div class="img-background"></div>

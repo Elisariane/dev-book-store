@@ -22,12 +22,13 @@ quantityProduct: number = 1;
   }
 
   addQuantity() {
-    this.quantityProduct++;
+    this.item.quantity++;
   }
 
   subQuantity() {
-    if (this.quantityProduct > 1)
-      this.quantityProduct--;
+    if (this.item.quantity > 1){
+      this.item.quantity--;
+    }
   }
 
 }
