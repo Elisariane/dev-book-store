@@ -1,6 +1,6 @@
-import { Router } from '@angular/router';
-import { ICart } from './../../interfaces/ICart';
-import { ICupom } from './../../interfaces/ICupom';
+import { Router } from "@angular/router";
+import { ICart } from "./../../interfaces/ICart";
+import { ICupom } from "./../../interfaces/ICupom";
 import { CupomService } from "./../../services/cupom.service";
 import { CartService } from "src/app/services/cart.service";
 import { Component, Input } from "@angular/core";
@@ -27,31 +27,41 @@ export class CardCartShoppingComponent {
   countItemCart: number = 0;
 
   total: number = 0;
-  subTotal?: number = 0;
-  discountIsApplied: boolean = false;
-  cupomApplied?: ICupom; 
+  subtotal: number = 0;
+  cupomIsApplied: boolean = false;
+  cupomApplied?: ICupom;
   cart = {} as ICart;
 
   @Input()
   item!: IProduct;
 
-
-  ngOnInit(): void {
-    this.updateTotal();
+  ngOnInit() {
+    this.total = 0;
+    this.subtotal = 0;
   }
 
-  applyDiscount(cupom: string) {
+  setDiscount(cupom: string) {
     this.cupomApplied = this.cupomSertvice.cupomIsValid(cupom);
-    this.discountIsApplied = this.cupomApplied != null;
-    if(this.discountIsApplied)
-    this.subTotal =  this.cupomApplied?.value;
+    this.cupomIsApplied = this.cupomApplied != null;
   }
 
-  goToHome() {
-    this.router.navigate([''])
+  applyDiscount() {
+    if (this.cupomIsApplied && !this.cupomApplied?.isPercent)
+      this.total = this.cartService.calculateTotalWithDiscountValueOff(
+        this.cupomApplied?.value
+      );
+  }
+
+  goToHome(): void {
+    this.router.navigate([""]);
+  }
+
+  goToCheckout() {
+    this.router.navigate(['checkout']);
   }
 
   updateTotal() {
-   this.total = this.cartService.sumTotal();
+    this.subtotal = this.cartService.calculateSubtotal();
+    this.total = this.cartService.calculateTotal(this.cupomApplied);
   }
 }

@@ -24,6 +24,7 @@ import { MyAccountComponent } from './pages/my-account/my-account.component';
 import { LoginComponent } from './pages/login/login.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatStepperModule} from '@angular/material/stepper';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,9 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     MatBadgeModule,
     MatSidenavModule,
     MatMenuModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatStepperModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

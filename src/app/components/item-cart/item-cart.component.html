@@ -1,31 +1,40 @@
 <div class="mat-elevation-z1 container">
-    <div class="img-card">
-        <img class="img-prod" [src]="item.img" alt="">
+  <div class="section-item">
+    <div class="section-item-content">
+      <div class="section-item-content-img">
+        <div class="section-item-img">
+          <img class="item-img" [src]="item.img" alt="" />
+        </div>
+      </div>
+      <div class="section-item-header-content">
+        <div class="section-item-header-info">
+          <p class="section-item-header-title">{{ item.name }}</p>
+          <div class="section-item-header-unit-price">
+            <span>{{ item.price | currency : "BRL" }}</span>
+          </div>
+        </div>
+        <div class="controls-quantity">
+          <div class="controls-container"></div>
+          <button mat-icon-button (click)="subQuantity()">
+            <mat-icon> remove </mat-icon>
+          </button>
+          <input
+            class="input-quantity"
+            type="text"
+            inputmode="numeric"
+            value="{{ item.quantity }}"
+          />
+          <button mat-icon-button (click)="addQuantity()">
+            <mat-icon> add </mat-icon>
+          </button>
+        </div>
+      </div>
     </div>
 
-    <div class="section-item-product">
-
-        <div class="section-header">
-            <p class="title" max> {{ item.name }} </p>
-            <p class="price"> {{ item.price | currency: "BRL" }} </p>
-        </div>
-
-        <div class="">
-            
-           <div class="controls-quantity">
-            <button  mat-icon-button  (click)="subQuantity()"  > 
-                <mat-icon> remove </mat-icon>
-            </button>
-            <input class="input-quantity" type="text" inputmode="numeric" value={{item.quantity}} >
-            <button  mat-icon-button (click)="addQuantity()" > 
-                <mat-icon> add </mat-icon>
-            </button>
-            
-            <button mat-icon-button class="remove-btn"  (click)="removeCart()" >
-                <mat-icon> delete </mat-icon>
-            </button>
-           </div>
-        </div>
+    <div class="">
+      <button mat-icon-button class="remove-btn" (click)="removeCart()">
+        <mat-icon> delete </mat-icon>
+      </button>
     </div>
-
+  </div>
 </div>
